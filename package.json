@@ -1,0 +1,32 @@
+{
+  "name": "meta-mask-task",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/tjdwp0211/meta-mask-task.git",
+  "author": "Sung Je Kim <rlatjdwp0211@naver.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@next/font": "^13.3.0",
+    "ethers": "^6.3.0",
+    "next": "^13.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "web3-react": "^5.0.5"
+  },
+  "devDependencies": {
+    "@emotion/babel-plugin": "^11.10.6",
+    "@types/node": "^18.15.11",
+    "@types/react": "^18.0.35",
+    "eslint": "^8.38.0",
+    "eslint-config-next": "^13.3.0",
+    "typescript": "^5.0.4"
+  }
+}
