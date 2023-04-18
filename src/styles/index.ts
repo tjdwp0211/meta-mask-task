@@ -1,22 +1,22 @@
 import * as airbnb from "./fonts/airbnbCerealW";
 import * as urbanist from "./fonts/urbanist";
 import * as gilroy from "./fonts/gilroy";
-import palette from "./palette";
+import PALETTE from "./palette";
 
-const gilroyFont = { bold: gilroy.bold.style.fontFamily };
+const GILROY = { bold: gilroy.bold.style.fontFamily };
 
-const airbnbCerealWFont = {
+const AIRBNBCEREAL_W = {
   medium: airbnb.medium.style.fontFamily,
   bold: airbnb.bold.style.fontFamily,
 };
 
-const urbanistFont = {
+const URBANIST = {
   medium: urbanist.medium.style.fontFamily,
   semiBold: urbanist.semiBold.style.fontFamily,
   bold: urbanist.bold.style.fontFamily,
 };
 
-export { airbnbCerealWFont, gilroyFont, urbanistFont, palette };
+export { AIRBNBCEREAL_W, GILROY, URBANIST, PALETTE };
 
 /**
  * 아래와 같이 위 코드의 반복된 작업을 최소화 시켜 봤으나 gilroyFont, airbnbCerealWFont, urbanistFont에
