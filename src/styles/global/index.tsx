@@ -1,5 +1,6 @@
 import React from "react";
 import { Global, css } from "@emotion/react";
+import { URBANIST } from "..";
 
 function GlobalStyle() {
   const globalStyle = css`
@@ -10,9 +11,17 @@ function GlobalStyle() {
       width: 100vw;
       height: 100vh;
       background-color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      font-family: ${URBANIST.bold};
+      & > * {
+        box-sizing: border-box;
+      }
+    }
+    button,
+    input,
+    a,
+    link {
+      all: unset;
+      cursor: pointer;
     }
   `;
 
