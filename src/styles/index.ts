@@ -14,6 +14,7 @@ const URBANIST = {
   medium: urbanist.medium.style.fontFamily,
   semiBold: urbanist.semiBold.style.fontFamily,
   bold: urbanist.bold.style.fontFamily,
+  extraBold: urbanist.extraBold.style.fontFamily,
 };
 
 export { AIRBNBCEREAL_W, GILROY, URBANIST, PALETTE };

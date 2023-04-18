@@ -24,4 +24,12 @@ const bold = Urbanist({
   subsets: ["latin", "latin-ext"],
 });
 
-export { medium, semiBold, bold };
+const extraBold = Urbanist({
+  weight: "800",
+  style: "normal",
+  display: "fallback",
+  fallback: ["system-ui"],
+  subsets: ["latin", "latin-ext"],
+});
+
+export { medium, semiBold, bold, extraBold };
