@@ -2,8 +2,8 @@ import React from "react";
 import styled from "@emotion/styled";
 
 interface TextProps {
-  family: string;
-  size: number;
+  family?: string;
+  size?: number;
   children: React.ReactNode;
   className?: string;
 }
