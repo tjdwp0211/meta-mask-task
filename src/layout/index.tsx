@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Img, Text } from "../components";
+import { Img, Navbar, Text } from "../components";
 import { arrowButton, renaissanceLabLogo } from "../assets/imgs";
 import { PALETTE, URBANIST } from "../styles";
 
@@ -27,6 +27,7 @@ function Layout({ children }: LayoutProps) {
           </button>
         </UserProfileWrapper>
       </Header>
+      <Navbar />
       <Main>{children}</Main>
     </>
   );
@@ -46,6 +47,7 @@ const Header = styled.div`
 const Main = styled.main`
   width: 100%;
   height: 948px;
+  padding: 0 clamp(40px, 10vw, 120px);
 `;
 
 const MainLogoWrapper = styled(Text)`
@@ -55,7 +57,7 @@ const MainLogoWrapper = styled(Text)`
   gap: 8px;
 `;
 
-const UserProfileWrapper = styled.div`
+const UserProfileWrapper = styled.aside`
   display: flex;
   align-items: center;
   gap: 4px;
