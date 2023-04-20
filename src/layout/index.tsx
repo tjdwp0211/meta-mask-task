@@ -46,8 +46,9 @@ const Header = styled.div`
 
 const Main = styled.main`
   width: 100%;
-  height: 948px;
+  height: fit-content;
   padding: 0 clamp(40px, 10vw, 120px);
+  padding-bottom: 24px;
 `;
 
 const MainLogoWrapper = styled(Text)`

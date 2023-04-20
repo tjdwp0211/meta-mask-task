@@ -1,6 +1,6 @@
+import React from "react";
 import styled from "@emotion/styled";
 import Link from "next/link";
-import React from "react";
 import { AIRBNBCEREAL_W, PALETTE } from "../../styles";
 import Text from "../Text";
 

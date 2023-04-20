@@ -2,8 +2,9 @@ import React from "react";
 import Head from "next/head";
 import Layout from "../layout";
 import GlobalStyle from "../styles/global";
+import { AppProps } from "next/app";
 
-function App({ Component, pageProps }) {
+function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
