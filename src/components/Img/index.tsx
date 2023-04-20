@@ -13,7 +13,6 @@ function Img({ src, size, alt, className }: ImgProps) {
   return (
     <Container
       src={src}
-      size={size}
       width={size.w}
       height={size.h}
       alt={alt}
@@ -25,7 +24,7 @@ function Img({ src, size, alt, className }: ImgProps) {
 
 export default Img;
 
-const Container = styled(Image)<Pick<ImgProps, "size">>`
-  width: ${props => props.size.w}px;
-  height: ${props => props.size.h}px;
+const Container = styled(Image)`
+  width: 100%;
+  height: 100%;
 `;
