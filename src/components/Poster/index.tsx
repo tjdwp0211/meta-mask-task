@@ -1,53 +1,61 @@
 import React from "react";
-import styled from "@emotion/styled";
-import { PALETTE } from "../../styles";
+import * as S from "./styled";
 import Img from "../Img";
+import Text from "../Text";
+import { ethereumLogo } from "../../assets/imgs";
+import { URBANIST } from "../../styles";
 
 interface PosterProps {
-  data: { src: string }[];
+  data: { title?: string; src: string }[];
 }
 
 function Poster({ data }: PosterProps) {
   const printOutSubImag = () => {
-    return (data.splice(1) as { src: string }[]).map((el, i) => (
+    return (data.slice(1) as { src: string }[]).map((el, i) => (
       <Img src={el.src} size={{ w: 89, h: 101 }} key={i} alt="dummy" />
     ));
   };
+
+  const ethereumLogoProps = (alt: string) => {
+    return {
+      src: ethereumLogo,
+      size: { w: 21, h: 21 },
+      alt: alt,
+    };
+  };
+
   return (
-    <Wrapper>
-      <div>
+    <S.Wrapper>
+      <S.ImgsWrapper>
         <Img src={data[0].src} size={{ w: 190, h: 205 }} alt="dummy" />
-        <GridWrapper>{printOutSubImag()}</GridWrapper>
-      </div>
-    </Wrapper>
+        <S.GridWrapper>{printOutSubImag()}</S.GridWrapper>
+        <S.Hits family={URBANIST.bold} size={13}>
+          +2.2k
+        </S.Hits>
+      </S.ImgsWrapper>
+      <S.BodyWrapper>
+        <S.BodyContainer>
+          <Text>{data[0].title}</Text>
+          <S.AboutEthereums>
+            <Text family={URBANIST.medium} size={14}>
+              Price
+            </Text>
+            <S.EthereumLogo {...ethereumLogoProps("ethereum price")} />
+            <Text family={URBANIST.semiBold} size={16}>
+              27.5 ETH
+            </Text>
+            <Text family={URBANIST.medium} size={14}>
+              Market Cap
+            </Text>
+            <S.EthereumLogo {...ethereumLogoProps("ethereum market cap")} />
+            <Text family={URBANIST.semiBold} size={16}>
+              27.5 ETH
+            </Text>
+          </S.AboutEthereums>
+        </S.BodyContainer>
+      </S.BodyWrapper>
+    </S.Wrapper>
   );
 }
 
 export default Poster;
-
-const Wrapper = styled.div`
-  width: 100%;
-  height: 331px;
-  border-radius: 10px;
-  border: 1px solid ${PALETTE.gray.dark};
-  padding: 4px;
-  img {
-    border-radius: 10px;
-  }
-  & > div {
-    display: flex;
-    justify-content: center;
-    gap: 4px;
-    & > img {
-      width: calc(50%);
-    }
-  }
-`;
-
-const GridWrapper = styled.div`
-  display: grid;
-  width: 181px;
-  justify-items: center;
-  grid-template-columns: repeat(2, calc(50% - 1.5px));
-  gap: 3px;
-`;
