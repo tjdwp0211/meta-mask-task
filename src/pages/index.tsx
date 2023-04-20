@@ -34,7 +34,7 @@ const Container = styled.div`
   display: grid;
   justify-content: center;
   justify-items: center;
-  grid-template-columns: repeat(3, clamp(300px, 30%, 381px));
+  grid-template-columns: repeat(3, clamp(300px, 33%, 381px));
   grid-template-rows: repeat(auto-fill, 331px);
   gap: 24px;
   @media (max-width: 991px) {
@@ -56,9 +56,10 @@ interface GetImg {
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  console.log(context);
   const data = await IMG_API.get().then(res =>
-    res.data.map((el: GetImg) => ({ src: el.url }))
+    res.data.map((el: GetImg, i: number) => {
+      return i % 5 === 0 ? { src: el.url, title: el.title } : { src: el.url };
+    })
   );
 
   return { props: { data } };

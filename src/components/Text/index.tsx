@@ -20,6 +20,6 @@ export default Text;
 
 const TextContainer = styled.p<Pick<TextProps, "family" | "size">>`
   font-family: ${props => props.family};
-  font-size: ${props => props.size};
+  font-size: ${props => props.size}px;
   margin: 0;
 `;
