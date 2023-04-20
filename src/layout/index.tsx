@@ -56,6 +56,10 @@ const MainLogoWrapper = styled(Text)`
   display: flex;
   align-items: center;
   gap: 8px;
+  img {
+    width: 36px;
+    height: 20px;
+  }
 `;
 
 const UserProfileWrapper = styled.aside`

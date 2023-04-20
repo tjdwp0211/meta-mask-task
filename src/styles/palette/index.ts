@@ -29,6 +29,9 @@ const PALETTE = {
     dark: "#D2D3D4",
     strong: "#797A7E",
   },
+  blue: {
+    light: "#ebedfc",
+  },
 };
 
 export default PALETTE;
