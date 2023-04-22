@@ -12,7 +12,7 @@ interface PosterProps {
 function Poster({ data }: PosterProps) {
   const printOutSubImag = () => {
     return (data.slice(1) as { src: string }[]).map((el, i) => (
-      <Img src={el.src} size={{ w: 89, h: 101 }} key={i} alt="dummy" />
+      <Img src={el.src} size={{ w: 89, h: 101 }} key={i} alt="sub images" />
     ));
   };
 
@@ -27,7 +27,7 @@ function Poster({ data }: PosterProps) {
   return (
     <S.Wrapper>
       <S.ImgsWrapper>
-        <Img src={data[0].src} size={{ w: 190, h: 205 }} alt="dummy" />
+        <Img src={data[0].src} size={{ w: 190, h: 205 }} alt="main image" />
         <S.GridWrapper>{printOutSubImag()}</S.GridWrapper>
         <S.Hits family={URBANIST.bold} size={13}>
           +2.2k

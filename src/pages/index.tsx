@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { Poster } from "../components";
 import { GetServerSidePropsContext } from "next";
-import IMG_API from "../api/Image";
+import IMG_API from "../api/image";
 
 function index({ data }) {
   if (!data) {
