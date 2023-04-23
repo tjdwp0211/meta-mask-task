@@ -3,8 +3,21 @@ import Head from "next/head";
 import Layout from "../layout";
 import GlobalStyle from "../styles/global";
 import { AppProps } from "next/app";
+import { Web3ReactProvider } from "@web3-react/core";
+import { Web3Provider } from "@ethersproject/providers";
+import Web3 from "web3";
+
+declare global {
+  interface Window {
+    web3?: Web3;
+  }
+}
 
 function App({ Component, pageProps }: AppProps) {
+  function getLibrary(provider) {
+    const library = new Web3Provider(provider, "any");
+    return library;
+  }
   return (
     <>
       <Head>
@@ -13,9 +26,11 @@ function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/renaissance-lab-logo.webp" />
       </Head>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <Web3ReactProvider getLibrary={getLibrary}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </Web3ReactProvider>
       <GlobalStyle />
     </>
   );
