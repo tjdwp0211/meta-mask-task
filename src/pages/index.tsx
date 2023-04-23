@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { Poster } from "../components";
 import { GetServerSidePropsContext } from "next";
 import IMG_API from "../api/image";
+import * as T from "../types/api";
 
 function index({ data }) {
   if (!data) {
@@ -47,17 +48,9 @@ const Container = styled.div`
   }
 `;
 
-interface GetImg {
-  albumId: number;
-  id: number;
-  title: string;
-  url: string;
-  thumbnailUrl: string;
-}
-
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const data = await IMG_API.get().then(res =>
-    res.data.map((el: GetImg, i: number) => {
+    res.data.map((el: T.GetImg, i: number) => {
       return i % 5 === 0 ? { src: el.url, title: el.title } : { src: el.url };
     })
   );
