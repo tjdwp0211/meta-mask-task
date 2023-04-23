@@ -1,76 +1,50 @@
-import React from "react";
-import styled from "@emotion/styled";
+import React, { useEffect, useState } from "react";
+import * as S from "./styled";
 import Link from "next/link";
-import { AIRBNBCEREAL_W, PALETTE } from "../../styles";
-import Text from "../Text";
+import { useRouter } from "next/router";
+import { AIRBNBCEREAL_W } from "../../styles";
 
 function Navbar() {
+  const { asPath } = useRouter();
+  const [navigateTo, setNavigateTo] = useState("");
   const dummy = {
     all: "420k",
     collections: "220k",
     singles: "352k",
   };
+  useEffect(() => {
+    setNavigateTo(prev => {
+      return asPath.slice(1, asPath.length) || "all";
+    });
+  }, [asPath]);
 
   return (
-    <Wrapper>
-      <Container>
-        <List>
-          <Link href={"/"}>
-            <NavText>All</NavText>
-            <NavText>{dummy.all}</NavText>
+    <S.Wrapper>
+      <S.Container path={navigateTo}>
+        <S.List id="all">
+          <Link href="/">
+            <S.NavText family={AIRBNBCEREAL_W.bold} size={15}>
+              All<span>{dummy.all}</span>
+            </S.NavText>
           </Link>
-        </List>
-        <List>
-          <Link href={"/collections"}>
-            <NavText>Collections</NavText>
-            <NavText>{dummy.collections}</NavText>
+        </S.List>
+        <S.List id="collections">
+          <Link href="/collections">
+            <S.NavText family={AIRBNBCEREAL_W.bold} size={15}>
+              Collections<span>{dummy.collections}</span>
+            </S.NavText>
           </Link>
-        </List>
-        <List>
-          <Link href={"/singles"}>
-            <NavText>Singles</NavText>
-            <NavText>{dummy.singles}</NavText>
+        </S.List>
+        <S.List id="singles">
+          <Link href="/singles">
+            <S.NavText family={AIRBNBCEREAL_W.bold} size={15}>
+              Singles<span>{dummy.singles}</span>
+            </S.NavText>
           </Link>
-        </List>
-      </Container>
-    </Wrapper>
+        </S.List>
+      </S.Container>
+    </S.Wrapper>
   );
 }
 
 export default Navbar;
-
-const Wrapper = styled.nav`
-  width: 100%;
-  border-bottom: 1px solid ${PALETTE.gray.soft};
-  padding: 34px 0 8px 0;
-`;
-
-const Container = styled.ul`
-  width: 403px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0;
-  padding-left: clamp(40px, 10vw, 122px);
-  a {
-    display: flex;
-    height: 26px;
-    gap: 4px;
-    p:nth-last-of-type(1) {
-      color: ${PALETTE.gray.strong};
-    }
-  }
-`;
-
-const List = styled.li`
-  all: unset;
-`;
-
-const NavText = styled(Text)`
-  display: flex;
-  align-items: center;
-  font-family: ${AIRBNBCEREAL_W.bold};
-  font-weight: 700;
-  font-size: 15px;
-`;
