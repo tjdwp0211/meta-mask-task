@@ -1,15 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
-import styled from "@emotion/styled";
+import * as S from "./styled";
+import * as T from "../types/components";
 import { Img, Navbar, Popup, Text } from "../components";
 import { arrowButton, ethereumLogo, renaissanceLabLogo } from "../assets/imgs";
-import { AIRBNBCEREAL_W, PALETTE, URBANIST } from "../styles";
+import { AIRBNBCEREAL_W, URBANIST } from "../styles";
 import Jazzicon from "@metamask/jazzicon";
 
-interface LayoutProps {
-  children: React.ReactNode;
-}
-
-function Layout({ children }: LayoutProps) {
+function Layout({ children }: T.LayoutProps) {
   const jazziconRef = useRef<HTMLDivElement>(null);
   const [pipeLineWithPopup, setPipeLineWithPopup] = useState({
     view: false,
@@ -37,7 +34,7 @@ function Layout({ children }: LayoutProps) {
 
   const createEthereumBalance = () => {
     return (
-      <EthereumBalanceWrapper>
+      <S.EthereumBalanceWrapper>
         <Img
           src={ethereumLogo}
           size={{ w: 25, h: 25 }}
@@ -46,18 +43,18 @@ function Layout({ children }: LayoutProps) {
         <Text family={AIRBNBCEREAL_W.bold} size={18}>
           {pipeLineWithPopup.balance} ETH
         </Text>
-      </EthereumBalanceWrapper>
+      </S.EthereumBalanceWrapper>
     );
   };
 
   return (
     <>
-      <Header>
-        <MainLogoWrapper family={URBANIST.extraBold} size={18}>
+      <S.Header>
+        <S.MainLogoWrapper family={URBANIST.extraBold} size={18}>
           <Img src={renaissanceLabLogo} size={{ w: 36, h: 20 }} alt="logo" />
           Renaissance Lab.
-        </MainLogoWrapper>
-        <UserProfileWrapper>
+        </S.MainLogoWrapper>
+        <S.UserProfileWrapper>
           {pipeLineWithPopup.account && createEthereumBalance()}
           <div className="user-profile" ref={jazziconRef} />
           <button onClick={handleArrowButtonClick}>
@@ -68,70 +65,12 @@ function Layout({ children }: LayoutProps) {
             setPipeLineWithPopup={setPipeLineWithPopup}
             deleteJazziconRef={handleJazziconRef}
           />
-        </UserProfileWrapper>
-      </Header>
+        </S.UserProfileWrapper>
+      </S.Header>
       <Navbar />
-      <Main>{children}</Main>
+      <S.Main>{children}</S.Main>
     </>
   );
 }
 
 export default Layout;
-
-const Header = styled.div`
-  width: 100%;
-  height: 76px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 28px 0 36px;
-`;
-
-const Main = styled.main`
-  width: 100%;
-  height: fit-content;
-  padding: 0 clamp(40px, 10vw, 120px);
-  padding-bottom: 24px;
-`;
-
-const MainLogoWrapper = styled(Text)`
-  height: 23px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  img {
-    width: 36px;
-    height: 20px;
-  }
-`;
-
-const UserProfileWrapper = styled.aside`
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  height: 100%;
-  position: relative;
-  .user-profile {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-left: 20px;
-    background-color: ${PALETTE.gray.dark};
-  }
-`;
-
-const EthereumBalanceWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  p:nth-of-type(1) {
-    color: ${PALETTE.black.soft};
-  }
-  img {
-    width: 16px;
-    height: 16px;
-    padding: 4px;
-    border-radius: 50%;
-    background-color: ${PALETTE.blue.light};
-  }
-`;
