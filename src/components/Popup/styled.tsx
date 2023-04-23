@@ -1,17 +1,10 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { AIRBNBCEREAL_W, PALETTE } from "../../styles";
+import * as T from "../../types/components";
 import Img from "../Img";
+import { AIRBNBCEREAL_W, PALETTE } from "../../styles";
 
-interface PopupProps {
-  view: boolean;
-}
-
-interface ActiveProps {
-  active: boolean;
-}
-
-const RootStyle = styled.div<PopupProps>`
+const RootStyle = styled.div<Pick<T.PopupProps, "view">>`
   height: fit-content;
   width: 248px;
   position: absolute;
@@ -24,7 +17,7 @@ const RootStyle = styled.div<PopupProps>`
   z-index: 1;
 `;
 
-export const Wrapper = styled(RootStyle)<ActiveProps>`
+export const Wrapper = styled(RootStyle)<{ active: boolean }>`
   &,
   button {
     display: flex;
@@ -53,7 +46,7 @@ export const Wrapper = styled(RootStyle)<ActiveProps>`
   }};
 `;
 
-export const ConnectingButon = styled.button<ActiveProps>`
+export const ConnectingButon = styled.button<{ active: boolean }>`
   width: 204px;
   ${props =>
     props.active
@@ -62,7 +55,7 @@ export const ConnectingButon = styled.button<ActiveProps>`
   border-radius: 10px;
 `;
 
-export const MaskingAccountContainer = styled.span<ActiveProps>`
+export const MaskingAccountContainer = styled.span<{ active: boolean }>`
   width: 100%;
   text-align: center;
   padding: ${props => props.active && "10px 0 22px 0"};

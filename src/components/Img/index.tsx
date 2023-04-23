@@ -1,15 +1,9 @@
 import React from "react";
 import Image from "next/image";
 import styled from "@emotion/styled";
+import * as T from "../../types/components";
 
-interface ImgProps {
-  src: string;
-  size: { w: number; h: number };
-  alt: string;
-  className?: string;
-}
-
-function Img({ src, size, alt, className }: ImgProps) {
+function Img({ src, size, alt, className }: T.ImgProps) {
   return (
     <Container
       src={src}

@@ -1,25 +1,15 @@
-import React, { Dispatch, useCallback, useEffect } from "react";
-import Text from "../Text";
+import React, { useCallback, useEffect } from "react";
 import * as S from "./styled";
+import * as T from "../../types/components";
+import Text from "../Text";
+import Web3 from "web3";
 import { AIRBNBCEREAL_W } from "../../styles";
 import { useWeb3React } from "@web3-react/core";
 import { injectedConnector } from "../../lib";
 import { metamaskLogo } from "../../assets/imgs";
-import Web3 from "web3";
 
-interface PopupProps {
-  view: boolean;
-  setPipeLineWithPopup: Dispatch<
-    React.SetStateAction<{
-      view: boolean;
-      account: null | string;
-      balance: null | string;
-    }>
-  >;
-  deleteJazziconRef(): void;
-}
-
-function Popup({ view, setPipeLineWithPopup, deleteJazziconRef }: PopupProps) {
+function Popup(props: T.PopupProps) {
+  const { view, setPipeLineWithPopup, deleteJazziconRef } = props;
   const { account, active, activate, deactivate } = useWeb3React();
 
   const getBalance = useCallback(async () => {

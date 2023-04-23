@@ -1,15 +1,12 @@
 import React from "react";
 import * as S from "./styled";
+import * as T from "../../types/components";
 import Img from "../Img";
 import Text from "../Text";
 import { ethereumLogo } from "../../assets/imgs";
 import { URBANIST } from "../../styles";
 
-interface PosterProps {
-  data: { title?: string; src: string }[];
-}
-
-function Poster({ data }: PosterProps) {
+function Poster({ data }: T.PosterProps) {
   const printOutSubImag = () => {
     return (data.slice(1) as { src: string }[]).map((el, i) => (
       <Img src={el.src} size={{ w: 89, h: 101 }} key={i} alt="sub images" />

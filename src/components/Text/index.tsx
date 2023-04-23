@@ -1,14 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
+import * as T from "../../types/components";
 
-interface TextProps {
-  family?: string;
-  size?: number;
-  children: React.ReactNode;
-  className?: string;
-}
-
-function Text({ family, size, className, children }: TextProps) {
+function Text({ family, size, className, children }: T.TextProps) {
   return (
     <TextContainer family={family} size={size} className={className}>
       {children}
@@ -18,7 +12,7 @@ function Text({ family, size, className, children }: TextProps) {
 
 export default Text;
 
-const TextContainer = styled.p<Pick<TextProps, "family" | "size">>`
+const TextContainer = styled.p<Pick<T.TextProps, "family" | "size">>`
   font-family: ${props => props.family};
   font-size: ${props => props.size}px;
   margin: 0;
