@@ -13,7 +13,6 @@ export interface PopupProps {
       balance: null | string;
     }>
   >;
-  deleteJazziconRef(): void;
 }
 
 export interface PosterProps {

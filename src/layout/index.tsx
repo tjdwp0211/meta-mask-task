@@ -4,7 +4,7 @@ import * as T from "../types/components";
 import { Img, Navbar, Popup, Text } from "../components";
 import { arrowButton, ethereumLogo, renaissanceLabLogo } from "../assets/imgs";
 import { AIRBNBCEREAL_W, URBANIST } from "../styles";
-import Jazzicon from "@metamask/jazzicon";
+import jazzicon from "@metamask/jazzicon";
 
 function Layout({ children }: T.LayoutProps) {
   const jazziconRef = useRef<HTMLDivElement>(null);
@@ -18,17 +18,18 @@ function Layout({ children }: T.LayoutProps) {
     setPipeLineWithPopup(prev => ({ ...prev, view: !prev.view }));
   };
 
-  const handleJazziconRef = () => {
+  const deleteJazzicon = () => {
     jazziconRef.current.firstChild.remove();
   };
 
   useEffect(() => {
     if (pipeLineWithPopup.account && jazziconRef.current) {
-      const userIcon: HTMLDivElement = Jazzicon(16, pipeLineWithPopup.account);
+      const userIcon: HTMLDivElement = jazzicon(16, pipeLineWithPopup.account);
       userIcon.style.width = "40px";
       userIcon.style.height = "40px";
-
       jazziconRef.current.appendChild(userIcon);
+    } else if (!pipeLineWithPopup.account && jazziconRef.current.firstChild) {
+      deleteJazzicon();
     }
   }, [pipeLineWithPopup.account]);
 
@@ -63,7 +64,6 @@ function Layout({ children }: T.LayoutProps) {
           <Popup
             view={pipeLineWithPopup.view}
             setPipeLineWithPopup={setPipeLineWithPopup}
-            deleteJazziconRef={handleJazziconRef}
           />
         </S.UserProfileWrapper>
       </S.Header>

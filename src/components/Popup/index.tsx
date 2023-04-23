@@ -9,7 +9,7 @@ import { injectedConnector } from "../../lib";
 import { metamaskLogo } from "../../assets/imgs";
 
 function Popup(props: T.PopupProps) {
-  const { view, setPipeLineWithPopup, deleteJazziconRef } = props;
+  const { view, setPipeLineWithPopup } = props;
   const { account, active, activate, deactivate } = useWeb3React();
 
   const getBalance = useCallback(async () => {
@@ -32,7 +32,6 @@ function Popup(props: T.PopupProps) {
   const handleConnect = () => {
     if (active) {
       setPipeLineWithPopup(pre => {
-        deleteJazziconRef();
         return { ...pre, view: false, account: null, balance: null };
       });
       deactivate();
